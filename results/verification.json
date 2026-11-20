@@ -1,0 +1,55 @@
+{
+  "status": "passed",
+  "scope": "Technical checks only; no pretrained ImageNet experiment completed.",
+  "random_weights_used_only_for_structural_checks": true,
+  "real_data_counts": {
+    "bird": {
+      "train": 80,
+      "val": 20
+    },
+    "cat": {
+      "train": 80,
+      "val": 20
+    },
+    "dog": {
+      "train": 80,
+      "val": 20
+    }
+  },
+  "split_sha256": "715186da2d3a5c10f119d66ea3c9f4af30f9aa7689ec18b199e4560882a57e9b",
+  "trainable_parameters_by_architecture": {
+    "frozen backbone": 1539,
+    "fine-tuning layer4 + fc": 8395267
+  },
+  "checks": [
+    "official CIFAR-10 MD5",
+    "stratified split and disjoint image hashes",
+    "deterministic validation preprocessing",
+    "512D embeddings before fc",
+    "extractor matches ResNet forward",
+    "optimizer parameter membership",
+    "head updates in A and B; layer4 updates only in B",
+    "frozen parameters and BatchNorm buffers unchanged",
+    "cosine unique pairs and zero norm protection",
+    "PCA covariance/SVD equivalence",
+    "manual theoretical calculations",
+    "no comments or docstrings"
+  ],
+  "project_environment_pip_check": "No broken requirements found.",
+  "full_entrypoint_attempt": {
+    "command": "python lab12.py",
+    "exit_code": 1,
+    "stopped_at": "loading ImageNet weights",
+    "error": "URLError: <urlopen error [WinError 10061] Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение>",
+    "epochs_completed": [
+      0,
+      0
+    ]
+  },
+  "delivery_checks": [
+    "CSV matches report and actual stdout",
+    "no fabricated metrics or PCA figure",
+    "repeated preparation produced identical split",
+    "300 exported PNG images"
+  ]
+}

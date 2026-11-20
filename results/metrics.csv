@@ -1,0 +1,3 @@
+﻿Режим,Trainable params,Accuracy,Macro-F1,Same-class cosine,Different-class cosine
+frozen backbone,,,,,
+fine-tuning layer4 + fc,,,,,

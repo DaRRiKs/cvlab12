@@ -1,0 +1,13 @@
+.venv/
+.idea/
+.mplconfig/
+__pycache__/
+*.py[cod]
+
+data/cifar-10-batches-py/
+data/weights/
+data/*.tar.gz
+data/*.tgz
+data/*.zip
+
+results/*_model.pt

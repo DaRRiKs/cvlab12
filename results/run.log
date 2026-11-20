@@ -1,0 +1,9 @@
+Device: cpu; seed=42; threads=4
+Data: train=240, val=60, counts={'bird': {'train': 80, 'val': 20}, 'cat': {'train': 80, 'val': 20}, 'dog': {'train': 80, 'val': 20}}
+Downloading: "https://download.pytorch.org/models/resnet18-f37072fd.pth" to C:\Users\darri\PycharmProjects\cvlab12\data\weights\checkpoints\resnet18-f37072fd.pth
+Run not completed at loading ImageNet weights: URLError: <urlopen error [WinError 10061] Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение>
+| Режим | Trainable params | Accuracy | Macro-F1 | Same-class cosine | Different-class cosine |
+| --- | --- | --- | --- | --- | --- |
+| frozen backbone |  |  |  |  |  |
+| fine-tuning layer4 + fc |  |  |  |  |  |
+Status: incomplete; elapsed=7.253s
