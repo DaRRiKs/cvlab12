@@ -11,3 +11,5 @@ data/*.tgz
 data/*.zip
 
 results/*_model.pt
+
+.completion_backup/

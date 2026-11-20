@@ -1,55 +1,133 @@
 {
   "status": "passed",
-  "scope": "Technical checks only; no pretrained ImageNet experiment completed.",
-  "random_weights_used_only_for_structural_checks": true,
-  "real_data_counts": {
-    "bird": {
-      "train": 80,
-      "val": 20
-    },
-    "cat": {
-      "train": 80,
-      "val": 20
-    },
-    "dog": {
-      "train": 80,
-      "val": 20
-    }
-  },
-  "split_sha256": "715186da2d3a5c10f119d66ea3c9f4af30f9aa7689ec18b199e4560882a57e9b",
-  "trainable_parameters_by_architecture": {
-    "frozen backbone": 1539,
-    "fine-tuning layer4 + fc": 8395267
-  },
-  "checks": [
-    "official CIFAR-10 MD5",
-    "stratified split and disjoint image hashes",
-    "deterministic validation preprocessing",
-    "512D embeddings before fc",
-    "extractor matches ResNet forward",
-    "optimizer parameter membership",
-    "head updates in A and B; layer4 updates only in B",
-    "frozen parameters and BatchNorm buffers unchanged",
-    "cosine unique pairs and zero norm protection",
-    "PCA covariance/SVD equivalence",
-    "manual theoretical calculations",
-    "no comments or docstrings"
+  "scope": "Completed pretrained ImageNet experiment and saved artifact checks.",
+  "epochs_completed": [
+    5,
+    3
   ],
-  "project_environment_pip_check": "No broken requirements found.",
-  "full_entrypoint_attempt": {
-    "command": "python lab12.py",
-    "exit_code": 1,
-    "stopped_at": "loading ImageNet weights",
-    "error": "URLError: <urlopen error [WinError 10061] Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение>",
-    "epochs_completed": [
-      0,
-      0
-    ]
+  "split_sha256": "715186da2d3a5c10f119d66ea3c9f4af30f9aa7689ec18b199e4560882a57e9b",
+  "imagenet_weights_sha256": "f37072fd47e89c5e827621c5baffa7500819f7896bbacec160b1a16c560e07ec",
+  "class_order": [
+    "bird",
+    "cat",
+    "dog"
+  ],
+  "modes": [
+    {
+      "mode": "frozen backbone",
+      "correct_predictions": 45,
+      "validation_size": 60,
+      "confusion_matrix_rows_true_columns_predicted": [
+        [
+          17,
+          2,
+          1
+        ],
+        [
+          3,
+          16,
+          1
+        ],
+        [
+          2,
+          6,
+          12
+        ]
+      ],
+      "trainable_parameters": 1539,
+      "metrics": {
+        "Accuracy": 0.75,
+        "Macro-F1": 0.7475596299125712,
+        "Same-class cosine": 0.6978318800803384,
+        "Different-class cosine": 0.6759503497093504
+      },
+      "pca_explained_variance_ratio": [
+        0.08904211829047537,
+        0.0779451126977226
+      ],
+      "same_pairs": 570,
+      "different_pairs": 1200
+    },
+    {
+      "mode": "fine-tuning layer4 + fc",
+      "correct_predictions": 48,
+      "validation_size": 60,
+      "confusion_matrix_rows_true_columns_predicted": [
+        [
+          19,
+          0,
+          1
+        ],
+        [
+          1,
+          14,
+          5
+        ],
+        [
+          0,
+          5,
+          15
+        ]
+      ],
+      "trainable_parameters": 8395267,
+      "metrics": {
+        "Accuracy": 0.8,
+        "Macro-F1": 0.7998853450072962,
+        "Same-class cosine": 0.6174919824248487,
+        "Different-class cosine": 0.5440337539251625
+      },
+      "pca_explained_variance_ratio": [
+        0.15656207409491543,
+        0.08187111234791812
+      ],
+      "same_pairs": 570,
+      "different_pairs": 1200
+    }
+  ],
+  "checks": [
+    "300 unique exported images match pixel hashes",
+    "unchanged original stratified split",
+    "official ImageNet checkpoint hash prefix",
+    "frozen backbone matches ImageNet weights including BatchNorm",
+    "fine-tuning changes layer4 and fc; earlier parameters and buffers remain unchanged",
+    "checkpoint forward reproduces saved 512D embeddings and predictions for all 60 validation images",
+    "accuracy and macro-F1 independently calculated from confusion matrices match CSV to 6 decimals",
+    "cosine independently calculated over 570 same-class and 1200 different-class unique pairs",
+    "PCA agrees with sklearn PCA and stored projection",
+    "same validation labels and image order in both modes"
+  ],
+  "artifacts_sha256": {
+    "metrics.csv": "adfdfd8c3140a5e27ea954adfa2f36d49d7e094b7c4803d5dae766789db91a03",
+    "run.json": "c1b256d68d18020a32194942bdae604b303b07cc9598539a9ef6f9046625ebb4",
+    "pca_comparison.png": "422ab47b1a95ed882f027268aa54598e719ec050f890eb056ec59c9765f5d33d",
+    "frozen_embeddings.npz": "2cfad4ca30ac4a43405b07d23ecb3b78a094ed6aa3cecba14f0480b6df3f6a22",
+    "fine_tuned_embeddings.npz": "f496cb7a6da1df70bf82e1252873c9f8249b37090253d6c89009a1a40ecf8bcc"
   },
-  "delivery_checks": [
-    "CSV matches report and actual stdout",
-    "no fabricated metrics or PCA figure",
-    "repeated preparation produced identical split",
-    "300 exported PNG images"
-  ]
+  "report_checks": {
+    "status": "passed",
+    "pages": 8,
+    "toc_pages": {
+      "1 Цель работы": 2,
+      "2 Описание предметной области": 2,
+      "3 Ход выполнения работы": 3,
+      "3.1 Расчёт косинусного сходства": 3,
+      "3.2 Ручной расчёт PCA и энергии SVD": 3,
+      "3.3 Подготовка данных и модели ResNet18": 4,
+      "3.4 Режимы обучения модели": 5,
+      "3.5 Анализ пространства признаков": 5,
+      "3.6 Результаты выполнения программы": 6,
+      "4 Вывод по лабораторной работе": 7,
+      "5 Ответы на контрольные вопросы": 8
+    },
+    "metrics_table_matches_csv": true,
+    "grading_table_preserved": true,
+    "placeholders_removed": true,
+    "all_pages_visually_reviewed": true,
+    "training_functions_unchanged": true,
+    "pip_check": "No broken requirements found.",
+    "sha256": {
+      "CV Lab 12 - Shyngys Darkhan.docx": "b4e14519d90cb486e8746927ff863dcf2cb1b6e8d8f718189f9ad8040470abcc",
+      "CV Lab 12 - Shyngys Darkhan.pdf": "3291c6d40437f1c9fe10ed30b3581972f7793515d2c5dd08a21dfcd024bdec17"
+    }
+  }
 }

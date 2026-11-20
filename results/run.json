@@ -1,6 +1,6 @@
 {
-  "status": "incomplete",
-  "stage": "loading ImageNet weights",
+  "status": "complete",
+  "stage": "finished",
   "device": "cpu",
   "threads": 4,
   "python": "3.14.5",
@@ -17,8 +17,8 @@
     3
   ],
   "epochs_completed": [
-    0,
-    0
+    5,
+    3
   ],
   "batch_size": 16,
   "learning_rates": [
@@ -26,7 +26,48 @@
     0.0001
   ],
   "optimizer": "Adam",
-  "history": [],
+  "history": [
+    {
+      "mode": "frozen backbone",
+      "epoch": 1,
+      "loss": 1.0882526199022928
+    },
+    {
+      "mode": "frozen backbone",
+      "epoch": 2,
+      "loss": 0.7860448638598124
+    },
+    {
+      "mode": "frozen backbone",
+      "epoch": 3,
+      "loss": 0.6342676202456157
+    },
+    {
+      "mode": "frozen backbone",
+      "epoch": 4,
+      "loss": 0.5221420466899872
+    },
+    {
+      "mode": "frozen backbone",
+      "epoch": 5,
+      "loss": 0.4618391136328379
+    },
+    {
+      "mode": "fine-tuning layer4 + fc",
+      "epoch": 1,
+      "loss": 0.43302493592103325
+    },
+    {
+      "mode": "fine-tuning layer4 + fc",
+      "epoch": 2,
+      "loss": 0.06396491117775441
+    },
+    {
+      "mode": "fine-tuning layer4 + fc",
+      "epoch": 3,
+      "loss": 0.019234776931504407
+    }
+  ],
   "executable": "C:\\Users\\darri\\PycharmProjects\\cvlab12\\.venv\\Scripts\\python.exe",
   "counts": {
     "bird": {
@@ -42,6 +83,5 @@
       "val": 20
     }
   },
-  "error": "URLError: <urlopen error [WinError 10061] Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение>",
-  "elapsed_seconds": 7.253
+  "elapsed_seconds": 153.262
 }
